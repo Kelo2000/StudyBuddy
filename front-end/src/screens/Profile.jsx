@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { getToken, removeToken } from "../auth/auth";
 import { format } from "date-fns/fp";
+import {PersonCircle, Mortorboard} from "react-bootstrap-icons";
 
 const PostPreview = ({ id, subject, descrip, date_time, user_id }) => {
 	const shortDescrip = `${descrip}`;
@@ -41,16 +42,22 @@ const PostPreview = ({ id, subject, descrip, date_time, user_id }) => {
 const UserName = ({ name, major, picture }) => {
 	return (
 		<div className="UserInfo">
-			<div>
-				<img src={picture} className="Picture" alt="ProfilePicture" />
-			</div>
-			<div>
-				<h5> {name}</h5>
-				<h5>{major}</h5>
-			</div>
+		<div>
+			
+		  {picture ? (
+			<img src= {`${process.env.REACT_APP_BACK_URL}/${picture}`} className="Picture" alt="ProfilePicture" />
+		  ) : (
+			<PersonCircle size={80} className="Icon" />
+		  )}
 		</div>
+		<div ClassName="Names">
+		  <h3>{name}</h3>
+		  <h5>Major: {major}</h5>
+		</div>
+	  </div>
 	);
-};
+  };
+  
 
 const Profile = () => {
 	const [myposts, setMyposts] = useState([]);
@@ -73,6 +80,10 @@ const Profile = () => {
 			.then(function (response) {
 				const user = response.data.user;
 				const posts = response.data.posts;
+				if (!user.picture) {
+					user.picture = null; // Assign null or provide a default icon URL here
+				  }
+
 				setMyprofile(user);
 				setMyposts(posts);
 			})
@@ -126,7 +137,7 @@ const Profile = () => {
 					<UserName
 						name={profile.name}
 						major={profile.major}
-						picture={`${process.env.REACT_APP_BACK_URL}/${profile.Profile_pic}`}
+						picture={profile.Profile_pic}
 						onUploadSuccess={loadFilteredPosts}
 					/>
 					<div className="edit">

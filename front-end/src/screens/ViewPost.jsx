@@ -11,6 +11,7 @@ import { format } from "date-fns/fp";
 import { getToken, getUser } from "../auth/auth";
 import { MdArrowBack } from "react-icons/md";
 import { toast } from "react-toastify";
+import {PersonCircle} from "react-bootstrap-icons";
 
 const UserComments = ({ username, usermajor, usercomment, comdate }) => (
 	<div className="usercomment">
@@ -59,40 +60,6 @@ const Item = ({ title, date_time, mode }) => {
 			</p>
 			<p> Open to meeting {mode} </p>
 		</div>
-	);
-};
-
-const TitleBar = (props) => {
-	const title = props.title;
-	const back = props.backpage;
-	return (
-		<>
-			<nav className="navbar navbar-expand navbar-light bg-light">
-				<div className="container-fluid">
-					<div className="collapse navbar-collapse" id="navbarNav">
-						<ul className="navbar-nav d-flex justify-content-around w-100">
-							<li className="nav-item">
-								<button
-									className="nav-link active"
-									onClick={back}
-									style={{ border: "none" }}
-								>
-									<h6 className="m-0">
-										<i className="fas fa-arrow-circle-left" />{" "}
-									</h6>
-								</button>
-							</li>
-							<li className="nav-item">
-								<p className="nav-link m-0">
-									<strong>{title}</strong>
-								</p>
-							</li>
-							<li className="nav-item"></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</>
 	);
 };
 
@@ -243,21 +210,23 @@ const ViewPost = () => {
 					<div className="Buddy">
 						<div className="profile">
 							<div>
-								<img
-									src={
-										process.env.REACT_APP_BACK_URL +
-										"/" +
-										author.userpic
-									}
-									className="Picture rounded-circle"
-									alt="ProfilePicture"
-								/>
+								{author.userpic ? (
+								<img src= {
+									process.env.REACT_APP_BACK_URL +
+									"/" +
+									author.userpic
+								} className="Picture" alt="ProfilePicture" />
+								) : (
+								<PersonCircle size={80} className="Icon" />
+								)}
 							</div>
+
+
 							<div className="mydetails">
 								<h3 className="mb-3">{author.username}</h3>
 								<h3 className="mb-0">
 									{" "}
-									Majoring in {author.usermajor}
+									Major: {author.usermajor}
 								</h3>
 							</div>
 						</div>
