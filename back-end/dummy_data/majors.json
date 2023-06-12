@@ -1,47 +1,155 @@
 [
 	{
-		"field": "Biology"
+	  "field": "Accounting"
 	},
 	{
-		"field": "Chemistry"
+	  "field": "Aerospace Engineering"
 	},
 	{
-		"field": "Computer Science"
+	  "field": "Anthropology"
 	},
 	{
-		"field": "Economics"
+	  "field": "Architecture"
 	},
 	{
-		"field": "Engineering"
+	  "field": "Art History"
 	},
 	{
-		"field": "English"
+	  "field": "Biomedical Engineering"
 	},
 	{
-		"field": "Environmental Science"
+	  "field": "Biology"
 	},
 	{
-		"field": "Geography"
+	  "field": "Business"
 	},
 	{
-		"field": "History"
+	  "field": "Chemical Engineering"
 	},
 	{
-		"field": "Mathematics"
+	  "field": "Chemistry"
 	},
 	{
-		"field": "Physics"
+	  "field": "Civil Engineering"
 	},
 	{
-		"field": "Political Science"
+	  "field": "Communications"
+	},
+
+	{
+		"field": "Computer Engineering"
+	  },
+
+	{
+	  "field": "Computer Science"
 	},
 	{
-		"field": "Psychology"
+	  "field": "Criminal Justice"
 	},
 	{
-		"field": "Sociology"
+	  "field": "Economics"
 	},
 	{
-		"field": "Statistics"
+	  "field": "Education"
+	},
+	{
+	  "field": "Electrical Engineering"
+	},
+	{
+	  "field": "English Literature"
+	},
+	{
+	  "field": "Environmental Engineering"
+	},
+	{
+	  "field": "Environmental Science"
+	},
+	{
+	  "field": "Film Studies"
+	},
+	{
+	  "field": "Finance"
+	},
+	{
+	  "field": "Forensic Science"
+	},
+	{
+	  "field": "Geology"
+	},
+	{
+	  "field": "Graphic Design"
+	},
+	{
+	  "field": "History"
+	},
+	{
+	  "field": "Industrial Engineering"
+	},
+	{
+	  "field": "International Relations"
+	},
+	{
+	  "field": "Journalism"
+	},
+	{
+	  "field": "Linguistics"
+	},
+	{
+	  "field": "Materials Science and Engineering"
+	},
+	{
+	  "field": "Mathematics"
+	},
+	{
+	  "field": "Mechanical Engineering"
+	},
+	{
+	  "field": "Music"
+	},
+	{
+	  "field": "Nuclear Engineering"
+	},
+	{
+	  "field": "Nutrition"
+	},
+	{
+	  "field": "Petroleum Engineering"
+	},
+	{
+	  "field": "Philosophy"
+	},
+	{
+	  "field": "Physics"
+	},
+	{
+	  "field": "Political Science"
+	},
+	{
+	  "field": "Psychology"
+	},
+	{
+	  "field": "Public Administration"
+	},
+	{
+	  "field": "Public Health"
+	},
+	{
+	  "field": "Social Work"
+	},
+	{
+	  "field": "Sociology"
+	},
+	{
+	  "field": "Software Engineering"
+	},
+	{
+	  "field": "Statistics"
+	},
+	{
+	  "field": "Systems Engineering"
+	},
+	{
+	  "field": "Theater"
 	}
-]
+  ]
+  

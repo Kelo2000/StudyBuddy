@@ -7,6 +7,7 @@ import axios from "axios";
 import { MdArrowBack, MdOutlineFormatListNumberedRtl } from "react-icons/md";
 import { getToken } from "../auth/auth";
 import { format } from "date-fns/fp";
+import {Mortarboard, PersonCircle} from "react-bootstrap-icons";
 
 const PostPreview = ({ id, subject, descrip, date_time,user_id }) => {
 	const shortDescrip = `${descrip}`;
@@ -39,17 +40,25 @@ const PostPreview = ({ id, subject, descrip, date_time,user_id }) => {
 	);
 };
 
-const UserName = ({ name, major, picture }) => (
+const UserName = ({ name, major, picture }) => {
+	return (
 	<div className="UserInfo">
 		<div>
-			<img src={picture} className="Picture" alt="ProfilePicture" />
+			
+		  {picture ? (
+			<img src= {`${process.env.REACT_APP_BACK_URL}/${picture}`} className="Picture" alt="ProfilePicture" />
+		  ) : (
+			<PersonCircle size={80} className="Icon" />
+		  )}
 		</div>
 		<div>
-			<h5> {name}</h5>
-			<h5>{major}</h5>
+		  <h3>{name}</h3>
+		  <h5>Major: {major}</h5>
 		</div>
-	</div>
+	  </div>
 );
+ }; 
+
 const UserProfile = () => {
 	const { userId } = useParams();
 	const [posts, setMyposts] = useState([]);
@@ -75,6 +84,9 @@ const UserProfile = () => {
 				const user = response.data.user;
 				const allposts = response.data.posts;
 				const isOwner = response.data.isOwner;
+				if (!user.picture) {
+					user.picture = null; // Assign null or provide a default icon URL here
+				  }
 				setMyprofile(user);
 				setMyposts(allposts);
 				setOwner(isOwner);
@@ -118,7 +130,7 @@ const UserProfile = () => {
 					<UserName
 						name={profile.name}
 						major={profile.major}
-						picture={`${process.env.REACT_APP_BACK_URL}/${profile.Profile_pic}`}
+						picture={profile.Profile_pic}
 					/>
 				{!Owner && (
 					<div className="Message">

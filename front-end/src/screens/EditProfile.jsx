@@ -290,7 +290,7 @@ export default function EditProfile() {
 										{...register("major")}
 									>
 										<option value="">Select a major</option>
-										{MAJORS.map((major) => (
+										{MAJORS.sort().map((major) => (
 											<option key={major} value={major}>
 												{major}
 											</option>
