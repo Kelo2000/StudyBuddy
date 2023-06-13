@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { getToken, removeToken } from "../auth/auth";
 import { format } from "date-fns/fp";
-import {PersonCircle, Mortorboard} from "react-bootstrap-icons";
+import {PersonCircle} from "react-bootstrap-icons";
 
 const PostPreview = ({ id, subject, descrip, date_time, user_id }) => {
 	const shortDescrip = `${descrip}`;
