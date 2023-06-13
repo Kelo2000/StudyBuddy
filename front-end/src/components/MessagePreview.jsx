@@ -2,7 +2,6 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Badge from "react-bootstrap/Badge";
-import {PersonCircle} from "react-bootstrap-icons";
 
 export default function MessagePreview({ chat }) {
 	const { preview, name, img_url, unread, id } = chat;
@@ -11,17 +10,13 @@ export default function MessagePreview({ chat }) {
 	return (
 		<Card className="m-3" onClick={() => (window.location.href = chat_url)}>
 			<div className="message_card">
-					{img_url ? (
-					<Image
-						src={`${process.env.REACT_APP_BACK_URL}/${img_url}`}
-						roundedCircle
-						thumbnail
-						width={100}
-						height={100}
-					/>
-					) : (
-					<PersonCircle size={80} className="Icon" />
-					)}
+				<Image
+					src={`${process.env.REACT_APP_BACK_URL}/${img_url}`}
+					roundedCircle
+					thumbnail
+					width={100}
+					height={100}
+				/>
 				<Card.Body>
 					<Card.Title>{name}</Card.Title>
 					<Card.Text>{preview}</Card.Text>
