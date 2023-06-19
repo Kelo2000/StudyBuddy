@@ -66,8 +66,37 @@
 }
 
 .usercomment {
-	border-radius: 10px;
+	border-radius: 5px;
+	padding-left: 5px;
 	background-color: #c1c8ff;
+	display: flex;
+	flex-direction: column;
+	color:Black;
+	margin-bottom: 5px;
+	margin-left: 2px;
+}
+
+.usercomment p {
+	color:rgb(43, 41, 41);
+}
+
+.usercomment h5 {
+	color:black;
+	font-style: bold;
+	font-size: large;
+}
+
+.usercomment h7 {
+	color:rgb(84, 83, 83);
+	font-size: 12px;
+}
+
+.commentheader {
+	display: flex;
+	flex-direction: row;
+	color:blue;
+	justify-content: space-between;
+	text-align: left;
 }
 
 .MessageBuddy {
@@ -99,9 +128,22 @@
 .post_subject {
 	background-color: #c1c8ff;
 	color: white;
-	font-size: larger;
 	font-weight: bold;
+	border-radius: 10px;
 }
+
+.Post_time {
+	display: flex;
+	flex-direction: row;
+	color:blue;
+	justify-content: space-between;
+}
+
+.Post_time p{
+	color: black;
+	border-radius: 8px;
+}
+
 
 .myspinner{
 	/* display: flex;

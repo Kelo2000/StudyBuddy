@@ -12,18 +12,15 @@ import { getToken, getUser } from "../auth/auth";
 import { MdArrowBack } from "react-icons/md";
 import { toast } from "react-toastify";
 import {PersonCircle} from "react-bootstrap-icons";
+import { formatDistance } from 'date-fns';
 
-const UserComments = ({ username, usermajor, usercomment, comdate }) => (
+const UserComments = ({ username, usercomment, comdate }) => (
 	<div className="usercomment">
-		<div className="row p-1 pt-2 pb-2 m-1 ">
-			<h5 className="mb-0 text-left">{username}</h5>
-			<h6 className="mb-0 text-left">{usermajor}</h6>
-			<p className="mb-0 text-left">
-				{format("MM/dd/yyyy HH:MM")(new Date(comdate))}
-			</p>
-			<br />
-			<p className="mb-3 text-left">{usercomment}</p>
-		</div>
+			<h5>{username}</h5>
+			<p>{usercomment}</p>
+			<h7>
+  {formatDistance(new Date(comdate), new Date(), { addSuffix: true })}
+</h7>
 	</div>
 );
 
@@ -53,12 +50,14 @@ const Item = ({ title, date_time, mode }) => {
 	const time_12 = formatTime(time);
 	return (
 		<div className="Post-info">
-			<p className="post_subject"> {title} </p>
-			<p>
-				{" "}
-				{formatted_day} at {time_12}{" "}
-			</p>
-			<p> Open to meeting {mode} </p>
+			<h5 className="post_subject"> {title} </h5>
+			<div className="Post_time">
+				<p>
+					{" "}
+					Time: {formatted_day} at {time_12}{" "}
+				</p>
+				<p> Meeting: {mode} </p>
+			</div>
 		</div>
 	);
 };
@@ -77,7 +76,10 @@ const ViewPost = () => {
   	const userId = queryParams.get("userId")
 	const previousurl = document.referrer;
 	const handleKeyDown = (e) => {
-		if (e.key === "Enter") setInput("");
+		if (e.key === "Enter" && input.length > 0) {
+			e.preventDefault(); // Prevent form submission
+			handleButtonClick();
+		  }
 	};
 
 	const handleButtonClick = () => {
@@ -271,7 +273,6 @@ const ViewPost = () => {
 						{comments.map((comment) => (
 							<UserComments
 								username={comment.author_name}
-								usermajor={comment.author_major}
 								usercomment={comment.content}
 								comdate={comment.dateAndTime}
 							/>

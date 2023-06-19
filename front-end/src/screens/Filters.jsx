@@ -10,7 +10,6 @@ import { format } from "date-fns";
 import { MdArrowBack } from "react-icons/md";
 
 export default function Filters() {
-	const [value, onChange] = useState(new Date());
 	const navigate = useNavigate();
 	const [MAJORS, setMAJORS] = useState([]);
 
@@ -18,6 +17,7 @@ export default function Filters() {
 		register,
 		handleSubmit,
 		formState: { errors },
+		watch,
 	} = useForm();
 
 	useEffect(() => {
@@ -32,9 +32,10 @@ export default function Filters() {
 		});
 	};
 
+	const selectedFlexibility = watch('flexibility');
+
 	const onSubmit = (data) => {
-		console.log(data);
-		const selecteddate = format(new Date(value), "MMM dd, yyyy");
+		const selecteddate = data.date ? format(new Date(data.date), "MMM dd, yyyy"): null;
 		const searchKeyword = data.searchKeyword
 		const online = data.online;
 		const inPerson = data["in-person"];
@@ -70,21 +71,7 @@ export default function Filters() {
 					<div className="filters-container">
 						<div className="col-md-12">
 							<form onSubmit={handleSubmit(onSubmit)}>
-								<div className="mb-3 row">
-									<h2>
-										{" "}
-										<strong>Meeting Date </strong>
-									</h2>
-									<div className="calendar-container">
-										<Calendar
-											id="myCal"
-											onChange={onChange}
-											value={value}
-										/>
-									</div>
-								</div>
-
-								<div className="form-floating pt-0 mb-3 custom-01">
+							<div className="form-floating pt-0 mb-3 custom-01">
 									<select
 										type="text"
 										className={
@@ -115,6 +102,25 @@ export default function Filters() {
 										Flexibility
 									</label>
 								</div>
+
+								{/* Date */}
+								<div className="form-floating mb-3 custom-01">
+									<input
+										type="date"
+										className={
+											"form-control " +
+											(errors.date ? "is-invalid" : "")
+										}
+										id="date"
+										placeholder="Date"
+										{...register("date",{
+											required: selectedFlexibility === '1' || selectedFlexibility === '2',
+										  })}
+									/>
+									<label htmlFor="date">Pick a Date</label>
+								</div>
+
+								
 
 								{/* Mode of meeting */}
 								<div className="env-container">
@@ -180,7 +186,7 @@ export default function Filters() {
 											Select a subject
 										</option>
 										<option value="any"> Any </option>
-										{MAJORS.map((major) => (
+										{MAJORS.sort().map((major) => (
 											<option key={major} value={major}>
 												{major}
 											</option>

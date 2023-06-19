@@ -50,13 +50,13 @@ export default function Home() {
 		<div className="screen">
 			<div className="screen_header">Study Buddy</div>
 			<div className="screen_body home_container" id="home-content">
-				<div
-					className="home_search_btn"
+				<button
+					className="search_btn_elements"
 					onClick={() => (window.location.href = "/filters")}
 				>
-					<div className="search_text">Search Post</div>
-					<MdSearch />
-				</div>
+						<div className="search_text">Find Study Buddy</div>
+						<MdSearch />
+				</button>
 				<div className="pb-4">
 					<InfiniteScroll
 						dataLength={posts.length}
